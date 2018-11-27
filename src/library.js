@@ -3,7 +3,18 @@ const input = function(message) {
   let intake = readline.question(message);
   return intake;
 }
+const getGridSize = function() {
+  return +input("Enter the size of grid : ");
+}
 
+const getAliveCells = function() {
+  let aliveCells = input("Enter alive cells block numbers : ");
+  return aliveCells.split(",");
+}
+
+const getNoOfItterations = function() {
+  return +input("How many times do you want to itterate : ");
+}
 const makeList = function(size){
   let list  = new Array(size).fill("1");
   list = list.map( x => new Array(size).fill("*"));
@@ -39,4 +50,8 @@ module.exports = { makeGrid ,
   makeList ,
   input ,
   justifyLength ,
-  generateRow };
+  generateRow ,
+  getGridSize ,
+  getAliveCells ,
+  getNoOfItterations};
+
