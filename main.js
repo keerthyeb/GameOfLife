@@ -1,15 +1,13 @@
-const { makeList , makeGrid , input } = require("./src/library.js");
-const {getGridSize,getAliveCells,getNoOfItterations} = require("./src/library.js");
+const { makeNoList , makeGrid , input } = require("./src/library.js");
 
 const main = function() {
-  let size = getGridSize(); 
-  let list = makeList(size);
+  let size = +input("Enter the size of grid : ");
+  let list = makeNoList(size);
   let grid = makeGrid(list);
   console.log(grid);
-  let aliveCells = getAliveCells();
-  let itterations = getNoOfItterations(); 
-  let inputArgs = {size,aliveCells,itterations};
-
+  let aliveCells = input("Enter alive cells block numbers : ").split(",");
+  let iterations = +input("How many times do you want to itterate : ");
+  let inputArgs = {size,aliveCells,iterations};
 }
 
 main();

@@ -1,21 +1,16 @@
 const readline = require("readline-sync");
+const { generateCartesianSquare, 
+  generateCartesianProduct,
+  justifyLength,
+  isNotOrigin, 
+  add} = require("./util.js");
+
 const input = function(message) {
   let intake = readline.question(message);
   return intake;
-}
-const getGridSize = function() {
-  return +input("Enter the size of grid : ");
-}
+};
 
-const getAliveCells = function() {
-  let aliveCells = input("Enter alive cells block numbers : ");
-  return aliveCells.split(",");
-}
-
-const getNoOfItterations = function() {
-  return +input("How many times do you want to itterate : ");
-}
-const makeList = function(size){
+const makeNoList = function(size){
   let list  = new Array(size).fill("1");
   list = list.map( x => new Array(size).fill("*"));
   let value = 0;
@@ -33,25 +28,17 @@ const makeGrid = function(list){
   return gridArray.join("\n") ;
 }
 
-
-const justifyLength = function(text, width) {
-  let spaceWidth = width - text.toString().length;
-  return text + new Array(spaceWidth).fill(' ').join('');
-
-}
-
-
 const generateRow = function(list){
   list =  list.map( x => justifyLength(x,3)+"|");
   return "|"+list.join("");
 }
 
+const findNeighboursIndex = function(position){
+  return generateCartesianSquare([-1,0,1]).
+    filter(isNotOrigin).map(delta => add(delta,position));
+}
 module.exports = { makeGrid ,
-  makeList ,
+  makeNoList ,
   input ,
-  justifyLength ,
-  generateRow ,
-  getGridSize ,
-  getAliveCells ,
-  getNoOfItterations};
+  generateRow };
 
