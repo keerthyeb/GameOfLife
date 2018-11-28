@@ -36,8 +36,8 @@ const makeGrid = function(list){
 
 const justifyLength = function(text, width) {
   let spaceWidth = width - text.toString().length;
-  some =  text + new Array(spaceWidth).fill(' ').join('');
-  return some;
+  return text + new Array(spaceWidth).fill(' ').join('');
+
 }
 
 
