@@ -37,8 +37,10 @@ const findNeighboursIndex = function(position){
   return generateCartesianSquare([-1,0,1]).
     filter(isNotOrigin).map(delta => add(delta,position));
 }
+
 module.exports = { makeGrid ,
   makeNoList ,
   input ,
+  findNeighboursIndex,
   generateRow };
 

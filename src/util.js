@@ -17,7 +17,7 @@ const add = function(set1,set2){
 }
 
 const isNotOrigin = function(position) {
-  return position[0] != 0 && position[1] != 0;
+  return !(position[0] == 0 && position[1] == 0);
 }
 
 const justifyLength = function(text, width) {
