@@ -51,9 +51,25 @@ const findNeighbours = function(world,currPosition){
     map(position => world[position[0]][position[1]]);
 }
 
-const findAliveNeighbours = function(list,position){
-  return findNeighbours(list,position).filter( x => x == "a");
+const countAliveNeighbours = function(list,position){
+  return findNeighbours(list,position).filter( x => x == 1).length;
 }
+
+const decideState = function(length,cell){
+  let rules = [ '0','0',cell,'1','0','0','0','0','0' ];
+  return rules[length];
+}
+
+const generateNextWorld = function(world) {
+  let nextWorld = makeNoList(world.size);
+  for(let row = 0; row < world.size; row++) {
+    for(let column = 0; column < world.size; column++) {
+      let cell = world.list[row][column];
+      let aliveNeighboursCount = countAliveNeighbours(world.list,[row,column]);
+      nextWorld[row][column] = decideState(aliveNeighboursCount,cell);
+    }
+  }
+  return nextWorld; }
 
 module.exports = { makeGrid ,
   makeNoList ,
@@ -61,6 +77,8 @@ module.exports = { makeGrid ,
   findNeighbours,
   findNeighboursPositions,
   isValidPosition,
-  findAliveNeighbours,
+  countAliveNeighbours,
+  decideState,
+  generateNextWorld,
   generateRow };
 
