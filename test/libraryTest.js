@@ -15,7 +15,7 @@ const {
 describe("Test MakeList", function() {
   it(" Should make size*size array if size is given", function() {
     deepEqual(makeNoList(2), [[0, 1], [2, 3]]);
-    deepEqual(makeNoList(1), [[0], [0]]);
+    deepEqual(makeNoList(1), [[0]]);
   });
 });
 
